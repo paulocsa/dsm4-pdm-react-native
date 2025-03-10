@@ -1,3 +1,5 @@
+import TurmaScreen from "@/components/screen/turma";
+import Title from "@/components/ui/text/title";
 import { StatusBar } from "expo-status-bar";
 import {
   Platform,
@@ -12,11 +14,9 @@ import {
 export default function ModalScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>TURMA DSM4</Text>
-      <Image
-        style={styles.imageDesign}
-        source={{ uri: "https://reactnative.dev/docs/assets/p_cat1.png" }}
-      ></Image>
+      {/* Use a light status bar on iOS to account for the black space above the modal */}
+      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
+      <TurmaScreen />
     </View>
   );
 }
@@ -24,16 +24,22 @@ export default function ModalScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: "flex",
     alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
     fontWeight: "bold",
-    paddingTop: 30,
   },
-  imageDesign: {
-    width: 200,
-    height: 200,
+  separator: {
+    marginVertical: 30,
+    height: 1,
+    width: "80%",
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
