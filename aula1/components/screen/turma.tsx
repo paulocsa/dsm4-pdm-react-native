@@ -1,28 +1,40 @@
-import Title from '@/components/ui/text/title'
+import Title from '@/components/ui/text/Title/Title';
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet,View, Text,ScrollView,TextInput, Image } from 'react-native';
+import { Platform, StyleSheet, View, Text, ScrollView, TextInput, Image } from 'react-native';
+import Header from '../ui/Layout/Header';
+import ImageComponent from '../ui/Image/ImageComponent';
 
 
 export default function TurmaScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Turma: DSM4</Text>
-      <Title/>
+
+      <Header
+        title='Turma'
+        subtitle='DSM4'
+        titleStyle={{ color: '#ff0000' }}
+        subtitleStyle={{ color: '#000000' }}
+      />
       <Image
         source={{
           uri: 'https://cdn-icons-png.flaticon.com/512/7092/7092289.png',
         }}
-        style={{width: 200, height: 200}}
+        style={{ width: 200, height: 200 }}
       />
-              <TextInput
-          style={styles.input}
-          value={"Insira o texto"}
-        />
+
+      <ImageComponent
+        uri='https://cdn-icons-png.flaticon.com/512/7092/7092289.png'
+      />
+      
+      <TextInput
+        style={styles.input}
+        value={"Insira o texto"}
+      />
       <View style={styles.separator} />
 
-      {/* Use a light status bar on iOS to account for the black space above the Turma */}
+      {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      
+
     </View>
   );
 }
